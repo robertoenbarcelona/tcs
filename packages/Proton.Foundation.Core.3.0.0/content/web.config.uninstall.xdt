@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <appSettings xdt:Transform="InsertIfMissing">
+  </appSettings>
+  <appSettings>
+    <add key="ApplicationInsightsInstrumentationKey" value="[PUT HERE SAME KEY AS APPINSGHT CONFIG]" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="cache:redisConnectionString" value="[PUT HERE REDIS CONNECTION]" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="documentDb:endpointUri" value="[PUT HERE DOCUMENTDB URI]" xdt:Transform="Remove" xdt:Locator="Match(key)"  />
+    <add key="documentDb:authorizationKey" value="[PUT HERE DOCUMENTDB KEY]" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="documentDb:databaseName" value="[PUT HERE DOCUMENTDB DB NAME]" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="serviceBus:azureConnectionString" value="[PUT HERE SERVICEBUS CONNECTION]" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="serviceBus:subscriptionName" value="[PUT HERE SUBSCRIBER NAME]" xdt:Transform="Remove" xdt:Locator="Match(key)" />
+    <add key="azureSearch:resourceName" value="[PUT HERE YOUR RESOURCE NAME]" xdt:Transform="Remove" xdt:Locator="Match(key)"/>
+    <add key="azureSearch:key" value="[PUT HERE YOUR KEY]" xdt:Transform="Remove" xdt:Locator="Match(key)"/>
+  </appSettings>
+</configuration>

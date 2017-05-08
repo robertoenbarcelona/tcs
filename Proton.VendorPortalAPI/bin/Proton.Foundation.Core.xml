@@ -1,0 +1,2317 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Proton.Foundation.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Proton.Foundation.Core.ApiClient.ApiClient`1">
+            <summary>
+            Implements a generic client to consume Proton.Apis.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Proton.Foundation.Core.ApiClient.ApiClient`1.#ctor(System.String,System.String)">
+            <summary>
+            Api client constructor
+            </summary>
+            <param name="resourceUrl"></param>
+            <param name="securityToken"></param>
+        </member>
+        <member name="M:Proton.Foundation.Core.ApiClient.ApiClient`1.AddAsync(`0)">
+            <summary>
+            Makes a post request no api to add an Entity.
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.ApiClient.ApiClient`1.GetByRoute(System.String)">
+            <summary>
+            Makes a Get request to api to Get a entity(es) by a route.
+            </summary>
+            <param name="route"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.ApiClient.ApiClient`1.GetAllAsync(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Makes a Get request to api to Get All entities that match the queryStringParams.
+            </summary>
+            <param name="queryStringParams"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.ApiClient.ApiClient`1.GetByKeyAsync(System.String)">
+            <summary>
+            Makes a get request to api to Get the entity that matchs the id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.ApiClient.ApiClient`1.RemoveAsync(System.String,System.String)">
+            <summary>
+            Makes a delete request to the api to remove the entity that matchs the id.
+            </summary>
+            <param name="id"></param>
+            <param name="timeStamp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.ApiClient.ApiClient`1.UpdateAsync(`0,System.String)">
+            <summary>
+            Makes a put request to api to modify the entity passed that matches the id.
+            </summary>
+            <param name="entity"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.ApiClient.ApiClient`1.CheckStatusCode(System.Net.HttpStatusCode)">
+            <summary>
+            Throws an Exception is response is not satisfactory.
+            </summary>
+        </member>
+        <member name="T:Proton.Foundation.Core.ApiClient.IApiClient`1">
+            <summary>
+            Interface to implement in Proton.Api clients.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Proton.Foundation.Core.ApiClient.IApiClient`1.AddAsync(`0)">
+            <summary>
+            Defines the signature to Add a entity.
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.ApiClient.IApiClient`1.GetByRoute(System.String)">
+            <summary>
+            Defines the signature to get a list of entities by route.
+            </summary>
+            <param name="route"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.ApiClient.IApiClient`1.RemoveAsync(System.String,System.String)">
+            <summary>
+            Defines the signature to Remove a entity
+            </summary>
+            <param name="id"></param>
+            <param name="timeStamp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.ApiClient.IApiClient`1.UpdateAsync(`0,System.String)">
+            <summary>
+            Defines the signature to Update a entity
+            </summary>
+            <param name="entity"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.ApiClient.IApiClient`1.GetAllAsync(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Defines the signature to GetAll entities (accepts 1 filter)
+            </summary>
+            <param name="pattern"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.ApiClient.IApiClient`1.GetByKeyAsync(System.String)">
+            <summary>
+            Defines the signature to Get a Entity by Id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Cache.CacheKeyManager">
+            <summary>
+            Help serializaing and deserializang key
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.CacheKeyManager.Encode(System.String)">
+            <summary>
+            Encodes the specified input.
+            </summary>
+            <param name="input">The input.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.CacheKeyManager.Decode(System.String)">
+            <summary>
+            Decodes the specified hexadecimal values.
+            </summary>
+            <param name="hexValues">The hexadecimal values.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Cache.ICacheManager`1">
+            <summary>
+            Represent a cache manager.
+            </summary>
+            <typeparam name="T">The type of the entity.</typeparam>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.ICacheManager`1.Clear(System.String)">
+            <summary>
+            Clears the value specified by key.
+            </summary>
+            <param name="key">The key.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.ICacheManager`1.Get(System.String,System.Func{`0})">
+            <summary>
+            Gets the item.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="fallback">The fallback used to laod form source the entity if not in cache.</param>
+            <returns>An instance of TEnity in cache.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.ICacheManager`1.GetCollection(System.String,System.Func{System.Collections.Generic.IEnumerable{`0}})">
+            <summary>
+            Gets the collection of TEntity by specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.ICacheManager`1.HasKey(System.String)">
+            <summary>
+            Determines whether the specified key has key.
+            </summary>
+            <param name="key">The key.</param>
+            <returns>
+              <c>true</c> if the specified key has key; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="P:Proton.Foundation.Core.Cache.ICacheManager`1.ItemLifetime">
+            <summary>
+            Gets or sets the item lifetime.
+            </summary>
+            <value>
+            The item lifetime.
+            </value>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.ICacheManager`1.Set(System.String,`0)">
+            <summary>
+            Sets the specified in cache item by key.
+            </summary>
+            <param name="key">The cache key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.ICacheManager`1.Set(System.String,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Sets the specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="values">The values.</param>
+        </member>
+        <member name="T:Proton.Foundation.Core.Cache.RedisReadOnlyCacheRepository`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <seealso cref="T:Proton.Foundation.Core.Data.IRepository`1" />
+            <seealso cref="!:Proton.Foundation.Core.Data.ISelectable&lt;TEntity&gt;" />
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisReadOnlyCacheRepository`1.#ctor(Proton.Foundation.Core.UnitOfWork.IUnitOfWork,Proton.Foundation.Core.Cache.ICacheManager{`0},Proton.Foundation.Core.Reliability.IRetriever{System.Collections.Generic.IEnumerable{`0}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Cache.RedisReadOnlyCacheRepository`1"/> class.
+            </summary>
+            <param name="uow">The uow.</param>
+            <param name="cacheManager">The cache manager.</param>
+            <param name="retriever">The retriever.</param>
+            <exception cref="T:Proton.Foundation.Core.IoC.IncompatibleProviderRegistrationException">uow</exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisReadOnlyCacheRepository`1.DirectQuery(System.String,System.Object[])">
+            <summary>
+            Execute the direct dialog query.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>
+            An instance of <see cref="T:System.Linq.IQueryable`1" /> with the result tree.
+            </returns>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisReadOnlyCacheRepository`1.Find(System.String)">
+            <summary>
+            Finds the specified id.
+            </summary>
+            <param name="id">The id.</param>
+            <returns></returns>
+            <exception cref="T:Proton.Foundation.Core.Data.DataAccessException"></exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisReadOnlyCacheRepository`1.Query">
+            <summary>
+            Build the query object for this repository.
+            </summary>
+            <returns>
+            An instance of the <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1" /> with the expression tree.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisReadOnlyCacheRepository`1.Query(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Build the query object for this repository.
+            </summary>
+            <param name="query">The query.</param>
+            <returns>
+            An instance of the <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1" /> with the expression tree.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisReadOnlyCacheRepository`1.Query(Proton.Foundation.Core.Data.IQueryObject{`0})">
+            <summary>
+            Build the query object for this repository.
+            </summary>
+            <param name="queryObject">The query object.</param>
+            <returns>
+            An instance of the <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1" /> with the expression tree.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisReadOnlyCacheRepository`1.Select(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Selects the specified filter.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="orderBy">The order by.</param>
+            <param name="page">The page.</param>
+            <param name="pageSize">Size of the page.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Proton.Foundation.Core.Cache.RedisCacheManager`1">
+            <summary>
+            A base class for Redis cache manager that old logic to set and get items
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <seealso cref="T:Proton.Foundation.Core.Cache.ICacheManager`1" />
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheManager`1.#ctor(Proton.Foundation.Core.UnitOfWork.IUnitOfWork,Proton.Foundation.Core.Reliability.ICircuitBreaker,Proton.Foundation.Core.Logging.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Cache.RedisCacheManager`1"/> class.
+            </summary>
+            <param name="uow">The uow.</param>
+        </member>
+        <member name="P:Proton.Foundation.Core.Cache.RedisCacheManager`1.ItemLifetime">
+            <summary>
+            Gets or sets the item lifetime.
+            </summary>
+            <value>
+            The item lifetime.
+            </value>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheManager`1.Clear(System.String)">
+            <summary>
+            Clears the value specifued by key.
+            </summary>
+            <param name="key">The key.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheManager`1.Get(System.String,System.Func{`0})">
+            <summary>
+            Gets the item by specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="fallback">The fallback.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheManager`1.GetCollection(System.String,System.Func{System.Collections.Generic.IEnumerable{`0}})">
+            <summary>
+            Gets the collection of TEntity by specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheManager`1.HasKey(System.String)">
+            <summary>
+            Determines whether the cache has the specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <returns>
+              <c>true</c> if the specified exist; otherwise, <c>false</c>.
+            </returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheManager`1.Set(System.String,`0)">
+            <summary>
+            Sets the item in cache by specified key.
+            </summary>
+            <param name="key">The cache key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheManager`1.Set(System.String,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Sets the specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="values">The values.</param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Proton.Foundation.Core.Cache.RedisCacheUnitOfWork">
+            <summary>
+            Holds repository of on related unit of work, i.e. a Redis database instance
+            </summary>
+            <seealso cref="T:Proton.Foundation.Core.UnitOfWork.IUnitOfWorkAsync" />
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheUnitOfWork.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Cache.RedisCacheUnitOfWork"/> class.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheUnitOfWork.Repository``1">
+            <summary>
+            Get the repository active in this transaction.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <returns>
+            An instance of <see cref="T:Proton.Foundation.Core.Data.IRepository`1" />.
+            </returns>
+            <exception cref="T:Proton.Foundation.Core.IoC.NotRegisteredProviderException">No ServiceLocator set in RedisCacheUnitOfWorkAysnc</exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheUnitOfWork.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="T:Proton.Foundation.Core.Cache.RedisCacheRepository`1">
+            <summary>
+            Implement a Redis Cache repository
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <seealso cref="T:Proton.Foundation.Core.Data.IRepositoryAsync`1" />
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheRepository`1.#ctor(Proton.Foundation.Core.UnitOfWork.IUnitOfWork,Proton.Foundation.Core.Cache.ICacheManager{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Cache.RedisCacheRepository`1" /> class.
+            </summary>
+            <param name="uow">The uow.</param>
+            <param name="cacheManager">The chace manager.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheRepository`1.Delete(`0)">
+            <summary>
+            Deletes the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+            <exception cref="T:Proton.Foundation.Core.Data.DataAccessException"></exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheRepository`1.Delete(System.String,System.String)">
+            <summary>
+            Deletes the entity connect to specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="timeStamp"></param>
+            <returns></returns>
+            <exception cref="T:Proton.Foundation.Core.Data.DataAccessException"></exception>
+            <exception cref="T:Proton.Foundation.Core.Data.DataAccessException"></exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheRepository`1.DirectQuery(System.String,System.Object[])">
+            <summary>
+            Execute the direct dialog query.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>
+            An instance of <see cref="T:System.Linq.IQueryable`1" /> with the result tree.
+            </returns>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheRepository`1.Find(System.String)">
+            <summary>
+            Finds the specified id.
+            </summary>
+            <param name="id">The id.</param>
+            <returns></returns>
+            <exception cref="T:Proton.Foundation.Core.Data.DataAccessException"></exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheRepository`1.Insert(`0)">
+            <summary>
+            Inserts the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+            <exception cref="T:Proton.Foundation.Core.Data.DataAccessException"></exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheRepository`1.Query">
+            <summary>
+            Build the query object for this repository.
+            </summary>
+            <returns>
+            An instance of the <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1" /> with the expression tree.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheRepository`1.Query(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Build the query object for this repository.
+            </summary>
+            <param name="query">The query.</param>
+            <returns>
+            An instance of the <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1" /> with the expression tree.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheRepository`1.Query(Proton.Foundation.Core.Data.IQueryObject{`0})">
+            <summary>
+            Build the query object for this repository.
+            </summary>
+            <param name="queryObject">The query object.</param>
+            <returns>
+            An instance of the <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1" /> with the expression tree.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheRepository`1.Select(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Selects the specified filter.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="orderBy">The order by.</param>
+            <param name="page">The page.</param>
+            <param name="pageSize">Size of the page.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.Cache.RedisCacheRepository`1.Update(`0)">
+            <summary>
+            Updates the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+            <exception cref="T:Proton.Foundation.Core.Data.DataAccessException">
+            </exception>
+            <exception cref="T:Proton.Foundation.Core.Data.DataConcurrencyException"></exception>
+            <exception cref="T:Proton.Foundation.Core.Data.DataAccessException"></exception>
+        </member>
+        <member name="T:Proton.Foundation.Core.Data.AtLeastOnePropertyAttribute">
+            <summary>
+            Check if an object as at least oneproperty set
+            </summary>
+            <seealso cref="T:System.ComponentModel.DataAnnotations.ValidationAttribute" />
+            <remarks>This attribute is needed in QueryObject to mark at least one filter</remarks>
+        </member>
+        <member name="T:Proton.Foundation.Core.Data.DataConcurrencyException">
+            <summary>
+            Represents errors that occur during data access phase
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.DataConcurrencyException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.DataConcurrencyException" /> class.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.DataConcurrencyException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.DataConcurrencyException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.DataConcurrencyException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.DataConcurrencyException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.DataConcurrencyException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.DataConcurrencyException"/> class.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IForwardOnlyAsync`1.SelectAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Nullable{System.Int32},System.String)">
+            <summary>
+            Finds the entity in asynchronous mode by specified clausoles.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="orderBy">The order by.</param>
+            <param name="pageSize">Size of the page.</param>
+            <param name="token">The token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IPaginable`1.Select(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Query the underline provider with specified clausoles.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="orderBy">The order by.</param>
+            <param name="page">The page.</param>
+            <param name="pageSize">Size of the page.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IQueryFluentAsync`1.OrderBy(System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}})">
+            <summary>
+            Set the order by expression.
+            </summary>
+            <param name="orderBy">The order by.</param>
+            <returns>This instance of <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1"/> class.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IQueryFluentAsync`1.SelectAsync">
+            <summary>
+            Selects the result in asynchronous mode.
+            </summary>
+            <returns>An instance of <see cref="T:System.Threading.Tasks.Task`1"/> for the computation.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IQueryFluentAsync`1.SelectChunkAsync(System.String,System.Int32)">
+            <summary>
+            Selects the result in asynchronous mode with pagination forward.
+            </summary>
+            <param name="token">The token.</param>
+            <param name="pageSize">Size of the page.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.ItemNotFoundException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.ItemNotFoundException" /> class.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.ItemNotFoundException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.ItemNotFoundException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.ItemNotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.ItemNotFoundException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.ItemNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.ItemNotFoundException"/> class.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryFluentAsync`1.#ctor(Proton.Foundation.Core.Data.IRepositoryAsync{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.QueryFluent`1" /> class.
+            </summary>
+            <param name="repository">The repository.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryFluentAsync`1.#ctor(Proton.Foundation.Core.Data.IRepositoryAsync{`0},Proton.Foundation.Core.Data.IQueryObject{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.QueryFluent`1"/> class.
+            </summary>
+            <param name="repository">The repository.</param>
+            <param name="queryObject">The query object.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryFluentAsync`1.#ctor(Proton.Foundation.Core.Data.IRepositoryAsync{`0},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.QueryFluent`1"/> class.
+            </summary>
+            <param name="repository">The repository.</param>
+            <param name="expression">The expression.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryFluentAsync`1.OrderBy(System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}})">
+            <summary>
+            Set the order by expression.
+            </summary>
+            <param name="orderBy">The order by.</param>
+            <returns>This instance of <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1"/> class.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryFluentAsync`1.SelectAsync">
+            <summary>
+            Selects the result in asynchronous mode.
+            </summary>
+            <returns>
+            An instance of <see cref="T:System.Threading.Tasks.Task`1" /> for the computation.
+            </returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryFluentAsync`1.SelectChunkAsync(System.String,System.Int32)">
+            <summary>
+            Selects the result in asynchronous mode with pagination forward.
+            </summary>
+            <param name="token">The token.</param>
+            <param name="pageSize">Size of the page.</param>
+            <returns></returns>
+            <exception cref="T:System.NotSupportedException">Cannot ask for prograssive chunk in paginating repositories</exception>
+        </member>
+        <member name="T:Proton.Foundation.Core.Data.IQueryObject`1">
+            <summary>
+            Represent a query for an entity.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IQueryObject`1.Query">
+            <summary>
+            Queries this instance.
+            </summary>
+            <returns>An instance of  the expression tree of the instance.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IQueryObject`1.And(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Build a tree for the And expression with the specified query.
+            </summary>
+            <param name="query">The query.</param>
+            <returns>An instance of  the expression tree of the instance.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IQueryObject`1.Or(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Build a tree for the Or expression with the specified query.
+            </summary>
+            <param name="query">The query.</param>
+            <returns>An instance of  the expression tree of the instance.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IQueryObject`1.And(Proton.Foundation.Core.Data.IQueryObject{`0})">
+             <summary>
+            Build a tree for the And expression with the specified query object.
+             </summary>
+             <param name="queryObject">The query object.</param>
+             <returns>An instance of  the expression tree of the instance.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IQueryObject`1.Or(Proton.Foundation.Core.Data.IQueryObject{`0})">
+            <summary>
+            Build a tree for the Or expression with the specified query object.
+            </summary>
+            <param name="queryObject">The query object.</param>
+            <returns>An instance of  the expression tree of the instance.</returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Data.IRepository`1">
+            <summary>
+            Represent a readonly repository for the entity type.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IRepository`1.Find(System.String)">
+            <summary>
+            Finds the item by specified id.
+            </summary>
+            <param name="id">The id values.</param>
+            <returns>The entity instance.</returns>TEntity Find(params object[] keyValues);
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IRepository`1.Query">
+            <summary>
+            Build the query object for this repository.
+            </summary>
+            <returns>An instance of the <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1"/> with the expression tree.</returns>
+            
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IRepository`1.Query(Proton.Foundation.Core.Data.IQueryObject{`0})">
+            <summary>
+            Build the query object for this repository.
+            </summary>
+            <param name="queryObject">The query object.</param>
+            <returns>
+            An instance of the <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1" /> with the expression tree.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IRepository`1.Query(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Build the query object for this repository.
+            </summary>
+            <param name="query">The query.</param>
+            <returns>An instance of the <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1"/> with the expression tree.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IRepository`1.DirectQuery(System.String,System.Object[])">
+            <summary>
+            Execute the direct dialog query.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>An instance of <see cref="T:System.Linq.IQueryable`1"/> with the result tree.</returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Data.IRepositoryAsync`1">
+            <summary>
+            Represent a repository for the entity type with asyncronuous operations.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IRepositoryAsync`1.FindAsync(System.String,System.String)">
+            <summary>
+            Finds the entity in asynchronous mode by specified id.
+            </summary>
+            <param name="id">The id value.</param>
+            <returns>An instance of <see cref="T:System.Threading.Tasks.Task`1"/> with the execution.</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown if multiple entities exist in the context with the primary id value.</exception>
+            <exception cref="T:System.InvalidOperationException">Thrown if the context has been disposed.</exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IRepositoryAsync`1.FindAsync(System.Threading.CancellationToken,System.String,System.String)">
+            <summary>
+            Finds the entity in asynchronous mode by specified id.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="id">The id values.</param>
+            <returns>An instance of <see cref="T:System.Threading.Tasks.Task`1"/> with the execution.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IRepositoryAsync`1.Query">
+            <summary>
+            Build the query object for this repository.
+            </summary>
+            <returns>An instance of the <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1"/> with the expression tree.</returns>
+            
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IRepositoryAsync`1.Query(Proton.Foundation.Core.Data.IQueryObject{`0})">
+            <summary>
+            Build the query object for this repository.
+            </summary>
+            <param name="queryObject">The query object.</param>
+            <returns>
+            An instance of the <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1" /> with the expression tree.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IRepositoryAsync`1.Query(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Build the query object for this repository.
+            </summary>
+            <param name="query">The query.</param>
+            <returns>An instance of the <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1"/> with the expression tree.</returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Data.IWritableRepository`1">
+            <summary>
+            Represent a repository that can update data for the entity type.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <seealso cref="T:Proton.Foundation.Core.Data.IRepository`1" />
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IWritableRepository`1.Insert(`0)">
+            <summary>
+            Inserts the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IWritableRepository`1.Update(`0)">
+            <summary>
+            Updates the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IWritableRepository`1.Delete(System.String,System.String)">
+            <summary>
+            Deletes the entity connect to specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IWritableRepository`1.Delete(`0)">
+            <summary>
+            Deletes the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="T:Proton.Foundation.Core.Data.IQueryFluent`1">
+            <summary>
+            Represent a proyection with fluent query for an entity.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IQueryFluent`1.OrderBy(System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}})">
+            <summary>
+            Set the order by expression.
+            </summary>
+            <param name="orderBy">The order by.</param>
+            <returns>This instance of <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1"/> class.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IQueryFluent`1.SelectPage(System.Int32,System.Int32)">
+            <summary>
+            Selects the results in the page specified.
+            </summary>
+            <param name="page">The page.</param>
+            <param name="pageSize">Size of the page.</param>
+            <param name="totalCount">The total count.</param>
+            <returns>An instance of <see cref="T:System.Collections.Generic.IEnumerable`1"/> class with the results.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IQueryFluent`1.Select``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Selects by specified selector.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="selector">The selector.</param>
+            <returns>An instance of <see cref="T:System.Collections.Generic.IEnumerable`1"/> class with the results.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IQueryFluent`1.Select">
+            <summary>
+            Selects all results.
+            </summary>
+            <returns>An instance of <see cref="T:System.Collections.Generic.IEnumerable`1"/> class with the results.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IQueryFluent`1.DirectQuery(System.String,System.Object[])">
+            <summary>
+            Execute the direct dialog query.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>An instance of <see cref="T:System.Linq.IQueryable`1"/> with the result tree.</returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Data.IWritableRepositoryAsync`1">
+            <summary>
+            Represent a repository that can update data for the entity type with asynccronous operations.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IWritableRepositoryAsync`1.DeleteAsync(System.String,System.String,System.String)">
+            <summary>
+            Deletes the entity in asynchronous mode.
+            </summary>
+            <param name="id">The id values.</param>
+            <param name="timeStamp">The timestamp.</param>
+            <returns>
+            An instance of <see cref="T:System.Threading.Tasks.Task`1" /> with the execution.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IWritableRepositoryAsync`1.DeleteAsync(System.Threading.CancellationToken,System.String,System.String,System.String)">
+            <summary>
+            Deletes the entity in asynchronous mode.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="id">The id values.</param>
+            <param name="timeStamp">The timestamp.</param>
+            <returns>
+            An instance of <see cref="T:System.Threading.Tasks.Task`1" /> with the execution.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IWritableRepositoryAsync`1.InsertAsync(`0)">
+            <summary>
+            Inserts the specified entity in asynchronous mode.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IWritableRepositoryAsync`1.InsertAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Inserts the specified entity in asynchronous mode.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IWritableRepositoryAsync`1.UpdateAsync(`0)">
+            <summary>
+            Updates the specified entityin asynchronous mode.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.IWritableRepositoryAsync`1.UpdateAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Updates the specified entityin asynchronous mode.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Data.PredicateBuilder">
+            <summary>
+            Enables the efficient, dynamic composition of query predicates.
+            </summary>
+            <remarks>This class is dangeous if not corretly used, it has to be used by query compositors and not directly</remarks>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.PredicateBuilder.True``1">
+            <summary>
+            Creates a predicate that evaluates to true.
+            </summary>
+            <typeparam name="T">The entity type.</typeparam>
+            <returns>An instance of the predicate.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.PredicateBuilder.False``1">
+            <summary>
+            Creates a predicate that evaluates to false.
+            </summary>
+            <typeparam name="T">The entity type.</typeparam>
+            <returns>An instance of the predicate.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.PredicateBuilder.Create``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Creates a predicate expression from the specified lambda expression.
+            </summary>
+            <param name="predicate">The predicate.</param>
+            <typeparam name="T">The entity type.</typeparam>
+            <returns>An instance of the predicate.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.PredicateBuilder.And``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Combines the first predicate with the second using the logical "and".
+            </summary>
+            <param name="first">The first expression tree.</param>
+            <param name="second">The second expression tree.</param>
+            <typeparam name="T">The entity type.</typeparam>
+            <returns>An instance of the predicate.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.PredicateBuilder.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Combines the first predicate with the second using the logical "or".
+            </summary>
+            <param name="first">The first expression tree.</param>
+            <param name="second">The second expression tree.</param>
+            <typeparam name="T">The entity type.</typeparam>
+            <returns>An instance of the predicate.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.PredicateBuilder.Not``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Negates the predicate.
+            </summary>
+            <typeparam name="T">The entity type.</typeparam>
+            <param name="expression">The expression.</param>
+            <returns>An instance of the predicate.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.PredicateBuilder.Compose``1(System.Linq.Expressions.Expression{``0},System.Linq.Expressions.Expression{``0},System.Func{System.Linq.Expressions.Expression,System.Linq.Expressions.Expression,System.Linq.Expressions.Expression})">
+            <summary>
+            Combines the first expression with the second using the specified merge function.
+            </summary>
+            <typeparam name="T">The entity type.</typeparam>
+            <param name="first">The first expression tree.</param>
+            <param name="second">The second expression tree.</param>
+            <param name="merge">The merge function.</param>
+            <returns>An instance of <see cref="T:System.Linq.Expressions.Expression`1"/> with predicate.</returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Data.PredicateBuilder.ParameterRebinder">
+            <summary>
+            This class override expression visitor for rebind params for dynamic composition expression
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.PredicateBuilder.ParameterRebinder.#ctor(System.Collections.Generic.Dictionary{System.Linq.Expressions.ParameterExpression,System.Linq.Expressions.ParameterExpression})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.PredicateBuilder.ParameterRebinder"/> class.
+            </summary>
+            <param name="map">The map.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.PredicateBuilder.ParameterRebinder.ReplaceParameters(System.Collections.Generic.Dictionary{System.Linq.Expressions.ParameterExpression,System.Linq.Expressions.ParameterExpression},System.Linq.Expressions.Expression)">
+            <summary>
+            Replaces the parameters in the expression.
+            </summary>
+            <param name="map">The map.</param>
+            <param name="exp">The exp.</param>
+            <returns>A rebinded expression.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.PredicateBuilder.ParameterRebinder.VisitParameter(System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            Visits the parameter.
+            </summary>
+            <param name="node">The p.</param>
+            <returns>The visit expression of param.</returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Data.QueryFluent`1">
+            <summary>
+            A proyection with fluent query API for an entity
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryFluent`1.#ctor(Proton.Foundation.Core.Data.IRepository{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.QueryFluent`1" /> class.
+            </summary>
+            <param name="repository">The repository.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryFluent`1.#ctor(Proton.Foundation.Core.Data.IRepository{`0},Proton.Foundation.Core.Data.IQueryObject{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.QueryFluent`1"/> class.
+            </summary>
+            <param name="repository">The repository.</param>
+            <param name="queryObject">The query object.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryFluent`1.#ctor(Proton.Foundation.Core.Data.IRepository{`0},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.QueryFluent`1"/> class.
+            </summary>
+            <param name="repository">The repository.</param>
+            <param name="expression">The expression.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryFluent`1.OrderBy(System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}})">
+            <summary>
+            Set the order by expression.
+            </summary>
+            <param name="orderBy">The order by.</param>
+            <returns>This instance of <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1"/> class.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryFluent`1.SelectPage(System.Int32,System.Int32)">
+            <summary>
+            Selects the result in the page.
+            </summary>
+            <param name="page">The page.</param>
+            <param name="pageSize">Size of the page.</param>
+            <param name="totalCount">The total count.</param>
+            <returns>An instance of <see cref="T:System.Collections.Generic.IEnumerable`1"/> class with the results.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryFluent`1.Select``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Selects the specified selector.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="selector">The selector.</param>
+            <returns>An instance of <see cref="T:System.Collections.Generic.IEnumerable`1"/> class with the results.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryFluent`1.Select">
+            <summary>
+            Selects all results.
+            </summary>
+            <returns>An instance of <see cref="T:System.Collections.Generic.IEnumerable`1"/> class with the results.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryFluent`1.DirectQuery(System.String,System.Object[])">
+            <summary>
+            Execute the sql query.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>An instance of <see cref="T:System.Linq.IQueryable`1"/> with the result tree.</returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Data.QueryObject`1">
+            <summary>
+            Represent a query for an entity.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryObject`1.Query">
+            <summary>
+            Get the query this instance.
+            </summary>
+            <returns>
+            An instance of  the expression tree of the instance.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryObject`1.And(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Build a tree for the And expression with the specified query.
+            </summary>
+            <param name="query">The query.</param>
+            <returns>
+            An instance of the expression tree of the instance.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryObject`1.Or(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Build a tree for the Or expression with the specified query.
+            </summary>
+            <param name="query">The query.</param>
+            <returns>
+            An instance of  the expression tree of the instance.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryObject`1.And(Proton.Foundation.Core.Data.IQueryObject{`0})">
+            <summary>
+            Build a tree for the And expression with the specified query object.
+            </summary>
+            <param name="queryObject">The query object.</param>
+            <returns>
+            An instance of  the expression tree of the instance.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.QueryObject`1.Or(Proton.Foundation.Core.Data.IQueryObject{`0})">
+            <summary>
+            Build a tree for the Or expression with the specified query object.
+            </summary>
+            <param name="queryObject">The query object.</param>
+            <returns>
+            An instance of  the expression tree of the instance.
+            </returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Data.DataAccessException">
+            <summary>
+            Represents errors that occur during data access phase
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.DataAccessException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.DataAccessException" /> class.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.DataAccessException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.DataAccessException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.DataAccessException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.DataAccessException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Data.DataAccessException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Data.DataAccessException"/> class.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.DocumentDb.DocumentDbManager`1.#ctor(Proton.Foundation.Core.UnitOfWork.IUnitOfWorkAsync)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.DocumentDb.DocumentDbManager`1"/> class.
+            </summary>
+            <param name="uow">The uow.</param>
+            <exception cref="T:Proton.Foundation.Core.IoC.IncompatibleProviderRegistrationException">uow</exception>
+        </member>
+        <member name="P:Proton.Foundation.Core.DocumentDb.DocumentDbManager`1.OfferThroughput">
+            <summary>
+            Gets or sets the offer throughput.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.DocumentDb.DocumentDbManager`1.GetQueriableProvider(System.Nullable{System.Int32},System.String)">
+            <summary>
+            Gets the queriable provider.
+            </summary>
+            <param name="pageDepth">The page depth.</param>
+            <param name="token">The token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.DocumentDb.DocumentDbManager`1.CreateDocumentCollectionIfNotExistsAsync">
+            <summary>
+            Creates the document collection if not exists.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.DocumentDb.DocumentDbRepository`1.DirectQuery(System.String,System.Object[])">
+            <summary>
+            Execute the direct dialog query.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>
+            An instance of <see cref="T:System.Linq.IQueryable`1" /> with the result tree.
+            </returns>
+            <remarks>
+            Expected query format is by {0}
+            <code>
+            "SELECT * FROM Account WHERE Account.LastName = '{0}' AND Account.City ? {1}"
+            </code>
+            </remarks>
+        </member>
+        <member name="T:Proton.Foundation.Core.DocumentDb.DocumentDbUnitOfWork">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Proton.Foundation.Core.UnitOfWork.IUnitOfWorkAsync" />
+        </member>
+        <member name="M:Proton.Foundation.Core.DocumentDb.DocumentDbUnitOfWork.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.DocumentDb.DocumentDbUnitOfWork"/> class.
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.DocumentDb.DocumentDbUnitOfWork.MaxRetryAttemptsOnThrottledRequests">
+            <summary>
+            Gets or sets the maximum retry attempts on throttled requests.
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.DocumentDb.DocumentDbUnitOfWork.MaxRetryWaitTimeInSeconds">
+            <summary>
+            Gets or sets the maximum retry wait time in seconds.
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.DocumentDb.DocumentDbUnitOfWork.Client">
+            <summary>
+            Gets the client.
+            </summary>
+            <value>
+            The client.
+            </value>
+        </member>
+        <member name="P:Proton.Foundation.Core.DocumentDb.DocumentDbUnitOfWork.DatabaseName">
+            <summary>
+            Gets the name of the database.
+            </summary>
+            <value>
+            The name of the database.
+            </value>
+        </member>
+        <member name="M:Proton.Foundation.Core.DocumentDb.DocumentDbUnitOfWork.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFDataContext.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.EF.EFDataContext"/> class.
+            </summary>
+            <param name="nameOrConnectionString">Either the database name or a connection string.</param>
+        </member>
+        <member name="P:Proton.Foundation.Core.EF.EFDataContext.InstanceId">
+            <summary>
+            Gets the instance identifier.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFDataContext.Dispose(System.Boolean)">
+            <summary>
+            Disposes the context. The underlying <see cref="T:System.Data.Entity.Core.Objects.ObjectContext" /> is also disposed if it was created
+            is by this context or ownership was passed to this context when this context was created.
+            The connection to the database (<see cref="T:System.Data.Common.DbConnection" /> object) is also disposed if it was created
+            is by this context or ownership was passed to this context when this context was created.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFRepository`1.#ctor(Proton.Foundation.Core.EF.IDataContext,Proton.Foundation.Core.UnitOfWork.IUnitOfWork)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.EF.EFRepository`1"/> class.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="unitOfWork">The unit of work.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFRepository`1.Query">
+            <summary>
+            Build the query object for this repository.
+            </summary>
+            <returns>An instance of the <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1"/> with the expression tree.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFRepository`1.Query(Proton.Foundation.Core.Data.IQueryObject{`0})">
+            <summary>
+            Build the query object for this repository.
+            </summary>
+            <param name="queryObject">The query object.</param>
+            <returns>An instance of the <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1"/> with the expression tree.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFRepository`1.Query(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Build the query object for this repository.
+            </summary>
+            <param name="query">The query.</param>
+            <returns>An instance of the <see cref="T:Proton.Foundation.Core.Data.IQueryFluent`1"/> with the expression tree.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFRepository`1.Find(System.String)">
+            <summary>
+            Finds the entity in asynchronous mode.
+            </summary>
+            <param name="id">The id values.</param>
+            <returns>
+            An instance of <see cref="T:System.Threading.Tasks.Task`1" /> with the execution.
+            </returns>
+            TEntity Find(params object[] keyValues);
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFRepository`1.Delete(System.String,System.String)">
+            <summary>
+            Deletes the entity 
+            </summary>
+            <param name="id">The identifier.</param>
+            <param name="timeStamp">The time stamp.</param>
+            <returns>
+            a true if can delete it
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFRepository`1.Delete(`0)">
+            <summary>
+            Deletes the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+            <exception cref="T:Proton.Foundation.Core.Data.DataAccessException"></exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFRepository`1.Insert(`0)">
+            <summary>
+            Inserts the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFRepository`1.Update(`0)">
+            <summary>
+            Updates the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFRepository`1.Select(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Selects the entities satisfaying the specified filter.
+            </summary>
+            <param name="filter">The filter.</param>
+            <param name="orderBy">The order by.</param>
+            <param name="includes">The includes.</param>
+            <param name="page">The page.</param>
+            <param name="pageSize">Size of the page.</param>
+            <returns>An instance of the <see cref="T:System.Linq.IQueryable`1"/> expression.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFRepository`1.DirectQuery(System.String,System.Object[])">
+            <summary>
+            Execute the direct dialog query.
+            </summary>
+            <param name="query">The query.</param>
+            <param name="parameters">The parameters.</param>
+            <returns>
+            An instance of <see cref="T:System.Linq.IQueryable`1" /> with the result tree.
+            </returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFUnitOfWork.#ctor(Proton.Foundation.Core.EF.IDataContext)">
+            <summary>
+            Initializes a new instance of the <see cref="N:Proton.Foundation.Core.UnitOfWork"/> class.
+            </summary>
+            <param name="dataContext">The data context.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFUnitOfWork.Finalize">
+            <summary>
+            Finalizes an instance of the <see cref="N:Proton.Foundation.Core.UnitOfWork"/> class.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFUnitOfWork.SaveChanges">
+            <summary>
+            Saves the changes.
+            </summary>
+            <returns>The number of entity written to the storage.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFUnitOfWork.BeginTransaction(System.Data.IsolationLevel)">
+            <summary>
+            Begins the transaction.
+            </summary>
+            <param name="isolationLevel">The isolation level.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFUnitOfWork.Commit">
+            <summary>
+            Commits this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFUnitOfWork.Rollback">
+            <summary>
+            Rollbacks this instance.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFUnitOfWork.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.EFUnitOfWork.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="T:Proton.Foundation.Core.EF.IDataContext">
+            <summary>
+            Represents a data context in asyncrounuos mode, technology agnostic
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.IDataContext.Set``1">
+            <summary>
+            Get the dataset for the entity.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.EF.IDataContext.SaveChanges">
+            <summary>
+            Saves the changes in asynchronous mode.
+            </summary>
+            <exception cref="T:System.Data.Entity.Infrastructure.DbUpdateException">
+                An error occurred sending updates to the database.</exception>
+            <exception cref="T:System.Data.Entity.Infrastructure.DbUpdateConcurrencyException">
+                A database command did not affect the expected number of rows. This usually
+                indicates an optimistic concurrency violation; that is, a row has been changed
+                in the database since it was queried.</exception>
+            <exception cref="T:System.Data.Entity.Validation.DbEntityValidationException">
+                The save was aborted because validation of entity property values failed.</exception>
+            <exception cref="T:System.NotSupportedException">
+                An attempt was made to use unsupported behavior such as executing multiple
+                asynchronous commands concurrently on the same context instance.</exception>
+            <exception cref="T:System.ObjectDisposedException">
+                The context or connection have been disposed.</exception>
+            <exception cref="T:System.InvalidOperationException">
+                Some error occurred attempting to process entities in the context either
+                before or after sending commands to the database.</exception>
+            <seealso cref="M:System.Data.Entity.DbContext.SaveChangesAsync"/>
+            <returns>An instance of <see cref="T:System.Threading.Tasks.Task`1"/> with the execution.</returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Extensions.ExpressionExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.Extensions.ExpressionExtensions.LambdaToString``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Convert a lambda expression to textual representation with access values.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="expression">The expression.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Extensions.StackExchangeRedisExtensions">
+            <summary>
+            Holds StackExchange utility extensions
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.Extensions.StackExchangeRedisExtensions.Get``1(StackExchange.Redis.IDatabase,System.String)">
+            <summary>
+            Gets the object from cache by specified key.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cache">The cache.</param>
+            <param name="key">The key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Extensions.StackExchangeRedisExtensions.Set``1(StackExchange.Redis.IDatabase,System.String,``0)">
+            <summary>
+            Sets the object in cache with the specified key.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cache">The cache.</param>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Extensions.StackExchangeRedisExtensions.Set``1(StackExchange.Redis.IDatabase,System.String,``0,System.DateTime)">
+            <summary>
+            Sets the object in cache with the specified key and with a lifetime
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="cache">The cache.</param>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+            <param name="ExpireTime">The expire time.</param>
+        </member>
+        <member name="T:Proton.Foundation.Core.Helpers.OrderByHelper">
+            <summary>
+            Static extension for Linq
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.Helpers.OrderByHelper.OrderBy``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Create the Order by clausole.
+            </summary>
+            <typeparam name="T">Entity type</typeparam>
+            <param name="enumerable">The enumerable collection to be ordered.</param>
+            <param name="orderBy">The order by clausole.</param>
+            <returns>A <see cref="T:System.Collections.Generic.IEnumerable`1"/> results.</returns>
+            <example>
+            <code>.OrderBy("SomeSubObject.SomeProperty ASC, SomeOtherProperty DESC");</code>
+            </example>
+        </member>
+        <member name="M:Proton.Foundation.Core.Helpers.OrderByHelper.OrderBy``1(System.Linq.IQueryable{``0},System.String)">
+            <summary>
+            Create the Order by clausole deferred.
+            </summary>
+            <typeparam name="T">Entity type</typeparam>
+            <param name="queryable">The queryable collection to be ordered.</param>
+            <param name="orderBy">The order by clausole.</param>
+            <returns>
+            A <see cref="T:System.Linq.IQueryable`1" /> declaration of results.
+            </returns>
+            <example>
+              <code>.OrderBy("SomeSubObject.SomeProperty ASC, SomeOtherProperty DESC");</code>
+            </example>
+        </member>
+        <member name="M:Proton.Foundation.Core.Helpers.OrderByHelper.OrderByDescending``1(System.Linq.IQueryable{``0},System.String)">
+            <summary>
+            Create the Order by clausole deferred.
+            </summary>
+            <typeparam name="T">Entity type</typeparam>
+            <param name="queryable">The queryable collection to be ordered.</param>
+            <param name="orderBy">The order by clausole.</param>
+            <returns>
+            A <see cref="T:System.Linq.IQueryable`1" /> declaration of results.
+            </returns>
+            <example>
+              <code>.OrderBy("SomeSubObject.SomeProperty ASC, SomeOtherProperty DESC");</code>
+            </example>
+        </member>
+        <member name="T:Proton.Foundation.Core.Helpers.RedisHelper">
+            <summary>
+            Help to get the Redis connection
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.Helpers.RedisHelper.RedisConnection">
+            <summary>
+            Gets the redis connection.
+            </summary>
+            <value>
+            The redis connection.
+            </value>
+        </member>
+        <member name="T:Proton.Foundation.Core.IoC.IncompatibleProviderRegistrationException">
+            <summary>
+            Represents errors that occur during retrienving the implementaion of interface if is not of expeted type. There is a problem in registration phase
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Proton.Foundation.Core.IoC.IncompatibleProviderRegistrationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.IoC.IncompatibleProviderRegistrationException" /> class.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.IoC.IncompatibleProviderRegistrationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.IoC.IncompatibleProviderRegistrationException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.IoC.IncompatibleProviderRegistrationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.IoC.IncompatibleProviderRegistrationException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.IoC.IncompatibleProviderRegistrationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.IoC.IncompatibleProviderRegistrationException"/> class.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.IoC.IocLocatorNotSetException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.IoC.IocLocatorNotSetException"/> class.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.IoC.IocLocatorNotSetException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.IoC.IocLocatorNotSetException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.IoC.IocLocatorNotSetException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.IoC.IocLocatorNotSetException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.IoC.IocLocatorNotSetException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.IoC.IocLocatorNotSetException"/> class.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Proton.Foundation.Core.IoC.NotRegisteredProviderException">
+            <summary>
+            represnt an error of setting the ServiceLocator adapter provider.
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Proton.Foundation.Core.IoC.NotRegisteredProviderException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.IoC.NotRegisteredProviderException"/> class.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.IoC.NotRegisteredProviderException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.IoC.NotRegisteredProviderException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.IoC.NotRegisteredProviderException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.IoC.NotRegisteredProviderException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.IoC.NotRegisteredProviderException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.IoC.NotRegisteredProviderException"/> class.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+        </member>
+        <member name="T:Proton.Foundation.Core.Logging.ILogger">
+            <summary>
+            Rerpresent the logger interface
+            </summary>
+        </member>
+        <member name="T:Proton.Foundation.Core.Reliability.IRetriever`1">
+            <summary>
+            Represent the simple fall back holder for the retrival 
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Proton.Foundation.Core.Reliability.RetryCircuitBreaker">
+             <summary>
+             Implements retry and circuit breaker patterns
+             </summary>
+             <seealso cref="T:Proton.Foundation.Core.Reliability.ICircuitBreaker" />
+             <remarks>Use it to wraps calls to on promise environment to get the dtata.</remarks>
+             <example>
+             <code>
+             
+             internal class Retriever{TEntity{
+             {
+                public TEntity Get()
+                {
+                  return default(TEntity);
+                }
+             
+                public Func{TEntity} Operation { get; set; }
+             }
+            
+            internal class CallerOrRepository{TEntity}
+            {
+               private Retriever{TEntity} retriever = new Retriever{TEntity}();
+            
+               public void Do()
+               {
+                  var cb = new RetryCircuitBreaker(new CircuitBreakerSettings());
+                  var result = cb.Execute(retriever.Get);
+                  var result1 = cb.Execute(retriever.Operation);
+               }
+            }
+             </code>
+             </example>
+        </member>
+        <member name="M:Proton.Foundation.Core.Search.IndexService`2.#ctor(Proton.Foundation.Core.Search.ISearchIndex{`0,`1},Proton.Foundation.Core.Installation.ISerializationConfigurePolicy{`1})">
+            <summary>
+            init a search service
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.Search.IndexService`2.PopulateAsync(`1)">
+            <summary>
+            Populate index with the value
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Search.ISearchIndex`2">
+            <summary>
+            Contract for Search Index Service in Proton
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="P:Proton.Foundation.Core.Search.ISearchIndex`2.Entity">
+            <summary>
+            Gets or sets the entity.
+            </summary>
+            <value>
+            The entity.
+            </value>
+        </member>
+        <member name="M:Proton.Foundation.Core.Search.ISearchIndex`2.WithStringField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Action{RedDog.Search.Model.IndexField})">
+            <summary>
+            Add a string field to the index.
+            </summary>
+            <param name="selector"></param>
+            <param name="actions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Search.ISearchIndex`2.WithBooleanField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Action{RedDog.Search.Model.IndexField})">
+            <summary>
+            Add a bool field to the index.
+            </summary>
+            <param name="selector"></param>
+            <param name="actions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Search.ISearchIndex`2.WithStringCollectionField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Action{RedDog.Search.Model.IndexField})">
+            <summary>
+            Add a String Collection field to the index.
+            </summary>
+            <param name="selector"></param>
+            <param name="actions"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Search.SearchIndex`2">
+            <summary>
+            Custom wrapper over RedDog.Search.Model.Index to support a typed entity definition index.
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:Proton.Foundation.Core.Search.SearchIndex`2.#ctor">
+            <summary>
+            Init an instance of search index for Azure Search
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.Search.SearchIndex`2.Entity">
+            <summary>
+            Gets or sets the entity.
+            </summary>
+            <value>
+            The entity.
+            </value>
+        </member>
+        <member name="P:Proton.Foundation.Core.Search.SearchIndex`2.Index">
+            <summary>
+            Index object for RedDog library.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.Search.SearchIndex`2.WithStringField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Action{RedDog.Search.Model.IndexField})">
+            <summary>
+            Adds a string field definition to the index.
+            </summary>
+            <param name="selector"></param>
+            <param name="actions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Search.SearchIndex`2.WithBooleanField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Action{RedDog.Search.Model.IndexField})">
+            <summary>
+            Adds a boolean field definition to the index.
+            </summary>
+            <param name="selector"></param>
+            <param name="actions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Search.SearchIndex`2.WithStringCollectionField(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Action{RedDog.Search.Model.IndexField})">
+            <summary>
+            Adds a string collection definition to the index.
+            </summary>
+            <param name="selector"></param>
+            <param name="actions"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Search.SearchObject`1">
+            <summary>
+            Support: eq, ne, gt, lt, ge, le; and, or, not; any/all for string[] ex: tags/any(t: t eq 'wifi') 
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <seealso cref="T:Proton.Foundation.Core.Search.ISearchObject`1" />
+        </member>
+        <member name="T:Proton.Foundation.Core.Search.SearchService`1">
+            <summary>
+            Azure Search Service Manager for Proton
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:Proton.Foundation.Core.Search.SearchService`1.#ctor">
+            <summary>
+            init a search service
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.Search.SearchService`1.SearchAsync(Proton.Foundation.Core.Search.ISearchObject{`0},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Searchs for documents in the appropiate Index.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Serialization.PoliciyBasedSerializeContractResolver">
+            <summary>
+            Special JsonConvert resolver that allows you to ignore properties. 
+            </summary>
+            <seealso cref="T:Newtonsoft.Json.Serialization.DefaultContractResolver" />
+            <example>
+            <code>
+               var jsonResolver = new PoliciyBasedSerializeContractResolver();
+               // ignore single property
+               jsonResolver.Ignore(typeof(Company), "Address");
+               // ignore single datatype
+               jsonResolver.Ignore(typeof(System.DateTime));
+               // ignore by lambda
+               jsonResolver.Ignore{Company}(x => x.Address).Ignore{Company}(x => x.City);
+               var jsonSettings = new JsonSerializerSettings() { ReferenceLoopHandling = ReferenceLoopHandling.Ignore, ContractResolver = jsonResolver };
+            </code>
+            </example>
+        </member>
+        <member name="M:Proton.Foundation.Core.Serialization.PoliciyBasedSerializeContractResolver.Ignore(System.Type,System.String[])">
+            <summary>
+            Explicitly ignore the given property(s) for the given type
+            </summary>
+            <param name="type"></param>
+            <param name="propertyName">one or more properties to ignore.  Leave empty to ignore the type entirely.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Serialization.PoliciyBasedSerializeContractResolver.Ignore``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            Ignores the specified selector using lambda notation.
+            </summary>
+            <typeparam name="TModel">The type of the model.</typeparam>
+            <param name="selector">The selector.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException">Could not get property name - selector</exception>
+        </member>
+        <member name="M:Proton.Foundation.Core.Serialization.PoliciyBasedSerializeContractResolver.IsIgnored(System.Type,System.String)">
+            <summary>
+            Is the given property for the given type ignored?
+            </summary>
+            <param name="type"></param>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Serialization.PoliciyBasedSerializeContractResolver.CreateProperty(System.Reflection.MemberInfo,Newtonsoft.Json.MemberSerialization)">
+            <summary>Cretate the Jsonproperty serialized.</summary>
+            <param name="member"></param>
+            <param name="memberSerialization"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Serialization.SerializationMode">
+            <summary>
+            This enum control policy for ignore in serialization properties
+            </summary>
+        </member>
+        <member name="T:Proton.Foundation.Core.ServiceBus.BusConfiguration">
+            <summary>
+            Holds configuration for service bus
+            </summary>
+            <seealso cref="T:Proton.Foundation.Core.ServiceBus.IBusConfiguration" />
+        </member>
+        <member name="P:Proton.Foundation.Core.ServiceBus.BusConfiguration.RetryingPolicy">
+            <summary>
+            Gets or sets the retrying policy.
+            </summary>
+        </member>
+        <member name="T:Proton.Foundation.Core.ServiceBus.IBusConfiguration">
+            <summary>
+            Represent a confguration for service bus behaviour
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.ServiceBus.IBusConfiguration.RetryingPolicy">
+            <summary>
+            Gets or sets the retrying policy.
+            </summary>
+        </member>
+        <member name="T:Proton.Foundation.Core.ServiceBus.ITopicConfiguration`1">
+            <summary>
+            Represent a policy for topic bvehaviour
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="M:Proton.Foundation.Core.ServiceBus.ITopicConfiguration`1.GetDescription">
+            <summary>
+            Gets the description for configurate.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.ServiceBus.ITopicManager`1">
+            <summary>
+            Represent a manaer for publish-subscribe us
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="M:Proton.Foundation.Core.ServiceBus.ITopicManager`1.Send(Proton.Foundation.Core.ServiceBus.OperationEvent{`0})">
+            <summary>
+            Sends the event related to entity in topic.
+            </summary>
+            <param name="eventRaised">The event raised.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.ServiceBus.ITopicManager`1.SendAsync(Proton.Foundation.Core.ServiceBus.OperationEvent{`0})">
+            <summary>
+            Sends Sends the event related to entity in topic in asynchronous mode.
+            </summary>
+            <param name="eventRaised">The event raised.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.ServiceBus.ITopicManager`1.AttachOnMessage(System.Func{Proton.Foundation.Core.ServiceBus.OperationEvent{`0},System.String})">
+            <summary>
+            Attachs the process of the message.
+            </summary>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.ServiceBus.ITopicManager`1.AttachOnMessageAsync(System.Func{Proton.Foundation.Core.ServiceBus.OperationEvent{`0},System.String})">
+             <summary>
+            Attachs the process of the message in async behaviour
+             </summary>
+             <param name="action">The action.</param>
+        </member>
+        <member name="T:Proton.Foundation.Core.ServiceBus.OperationEvent">
+            <summary>
+            An operation event
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.ServiceBus.OperationEvent.MessageBody">
+            <summary>
+            Gets or sets the message body.
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.ServiceBus.OperationEvent.Operation">
+            <summary>
+            Gets or sets the operation.
+            </summary>
+        </member>
+        <member name="T:Proton.Foundation.Core.ServiceBus.TopicManager`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <seealso cref="T:Proton.Foundation.Core.ServiceBus.ITopicManager`1" />
+        </member>
+        <member name="M:Proton.Foundation.Core.ServiceBus.TopicManager`1.#ctor(Proton.Foundation.Core.ServiceBus.IBusConfiguration,Proton.Foundation.Core.ServiceBus.ITopicConfiguration{`0},Proton.Foundation.Core.Logging.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.ServiceBus.TopicManager`1"/> class.
+            </summary>
+            <param name="busConfiguration">The configuration.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.ServiceBus.TopicManager`1.Send(Proton.Foundation.Core.ServiceBus.OperationEvent{`0})">
+            <summary>
+            Sends the specified entity in topic.
+            </summary>
+            <param name="eventRaised">The event raised.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.ServiceBus.TopicManager`1.SendAsync(Proton.Foundation.Core.ServiceBus.OperationEvent{`0})">
+            <summary>
+            Sends the specified entity in topic in asynchronous mode.
+            </summary>
+            <param name="eventRaised">The event raised.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.ServiceBus.TopicManager`1.AttachOnMessage(System.Func{Proton.Foundation.Core.ServiceBus.OperationEvent{`0},System.String})">
+            <summary>
+            Attache the process of the message.
+            </summary>
+            <param name="action">The action.</param>
+        </member>
+        <member name="T:Proton.Foundation.Core.Services.IQueryableService`1">
+            <summary>
+            Represent an immutable (i.e. with only read operations) data service
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IQueryableService`1.Find(System.String)">
+            <summary>
+            Finds the specified by id.
+            </summary>
+            <param name="id">The id values.</param>
+            <returns>The entity instance.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IQueryableService`1.Query(Proton.Foundation.Core.Data.IQueryObject{`0})">
+            <summary>
+            Queries the repositry with specified query object.
+            </summary>
+            <param name="queryObject">The query object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IQueryableService`1.Query(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Queries the repositry with specified expressions
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Services.IQueryableServiceAsync`1">
+            <summary>
+            Represent an immutable (i.e. with only read operations) data service in asyncronous mode.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <seealso cref="T:Proton.Foundation.Core.Services.IQueryableService`1" />
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IQueryableServiceAsync`1.FindAsync(System.String,System.String)">
+            <summary>
+            Finds the entity in asynchronous mode.
+            </summary>
+            <param name="id">The id values.</param>
+            <returns>An instance of <see cref="T:System.Threading.Tasks.Task`1"/> with the execution.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IQueryableServiceAsync`1.FindAsync(System.Threading.CancellationToken,System.String,System.String)">
+            <summary>
+            Finds the entity in asynchronous mode.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="id">The id values.</param>
+            <returns>An instance of <see cref="T:System.Threading.Tasks.Task`1"/> with the execution.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IQueryableServiceAsync`1.Query(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Queries the repositry with specified expressions
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IQueryableServiceAsync`1.Query(Proton.Foundation.Core.Data.IQueryObject{`0})">
+            <summary>
+            Queries  the repositry with specified query object
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Services.IWritableService`1">
+            <summary>
+            Represent a date service for an entity.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <seealso cref="T:Proton.Foundation.Core.Services.IQueryableService`1" />
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IWritableService`1.Insert(`0)">
+            <summary>
+            Inserts the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IWritableService`1.Update(`0)">
+            <summary>
+            Updates the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IWritableService`1.Delete(System.String,System.String)">
+            <summary>
+            Deletes the specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IWritableService`1.Delete(`0)">
+            <summary>
+            Deletes the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="T:Proton.Foundation.Core.Services.IWritableServiceAsync`1">
+            <summary>
+            Represent a date service for an entityin astncronous mode.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <seealso cref="T:Proton.Foundation.Core.Services.IWritableService`1" />
+            <seealso cref="T:Proton.Foundation.Core.Services.IQueryableServiceAsync`1" />
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IWritableServiceAsync`1.InsertAsync(`0)">
+            <summary>
+            Inserts the specified entity in asyncronous mode.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IWritableServiceAsync`1.InsertAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Inserts the specified entity in asyncronous mode.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IWritableServiceAsync`1.UpdateAsync(`0)">
+            <summary>
+            Updates the specified entity in asyncronous mode.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IWritableServiceAsync`1.UpdateAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Updates the specified entity in asyncronous mode.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IWritableServiceAsync`1.DeleteAsync(System.String,System.String,System.String)">
+            <summary>
+            Deletes the entity in asynchronous mode.
+            </summary>
+            <param name="id">The id values.</param>
+            <returns>An instance of <see cref="T:System.Threading.Tasks.Task`1"/> with the execution.</returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.IWritableServiceAsync`1.DeleteAsync(System.Threading.CancellationToken,System.String,System.String,System.String)">
+            <summary>
+            Deletes the entity in asynchronous mode.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="id">The id values.</param>
+            <returns>An instance of <see cref="T:System.Threading.Tasks.Task`1"/> with the execution.</returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Services.QueryableServiceAsync`1">
+            <summary>
+            A servie with search operations in async behaviour
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <seealso cref="T:Proton.Foundation.Core.Services.QueryableService`1" />
+            <seealso cref="T:Proton.Foundation.Core.Services.IQueryableServiceAsync`1" />
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.QueryableServiceAsync`1.#ctor(Proton.Foundation.Core.Data.IRepositoryAsync{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Services.QueryableServiceAsync`1"/> class.
+            </summary>
+            <param name="repository">The repository.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.QueryableServiceAsync`1.FindAsync(System.String,System.String)">
+            <summary>
+            Finds the entity in asynchronous mode.
+            </summary>
+            <param name="id">The id values.</param>
+            <returns>
+            An instance of <see cref="T:System.Threading.Tasks.Task`1" /> with the execution.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.QueryableServiceAsync`1.FindAsync(System.Threading.CancellationToken,System.String,System.String)">
+            <summary>
+            Finds the entity in asynchronous mode.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="id">The id values.</param>
+            <returns>
+            An instance of <see cref="T:System.Threading.Tasks.Task`1" /> with the execution.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.QueryableServiceAsync`1.Query(Proton.Foundation.Core.Data.IQueryObject{`0})">
+            <summary>
+            Queries  the repositry with specified query object
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.QueryableServiceAsync`1.Query(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Queries the repositry with specified expressions
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Services.QueryableService`1">
+            <summary>
+            A servie with search operations 
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <seealso cref="T:Proton.Foundation.Core.Services.IQueryableService`1" />
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.QueryableService`1.#ctor(Proton.Foundation.Core.Data.IRepository{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Services.QueryableService`1"/> class.
+            </summary>
+            <param name="repository">The repository.</param>
+        </member>
+        <member name="P:Proton.Foundation.Core.Services.QueryableService`1.Repository">
+            <summary>
+            Gets the repository.
+            </summary>
+            <value>
+            The repository.
+            </value>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.QueryableService`1.Find(System.String)">
+            <summary>
+            Finds the specified by id.
+            </summary>
+            <param name="id">The id values.</param>
+            <returns>
+            The entity instance.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.QueryableService`1.Query(Proton.Foundation.Core.Data.IQueryObject{`0})">
+            <summary>
+            Queries the repositry with specified query object.
+            </summary>
+            <param name="queryObject">The query object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.QueryableService`1.Query(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Queries the repositry with specified expressions
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Services.WritableServiceAsync`1">
+            <summary>
+            A service with serach and write operations with async behaviour
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <seealso cref="T:Proton.Foundation.Core.Services.WritableService`1" />
+            <seealso cref="T:Proton.Foundation.Core.Services.IWritableServiceAsync`1" />
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableServiceAsync`1.#ctor(Proton.Foundation.Core.Data.IWritableRepositoryAsync{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Services.WritableServiceAsync`1"/> class.
+            </summary>
+            <param name="repository">The repository.</param>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableServiceAsync`1.DeleteAsync(System.String,System.String,System.String)">
+            <summary>
+            Deletes the entity in asynchronous mode.
+            </summary>
+            <param name="id">The id values.</param>
+            <returns>
+            An instance of <see cref="T:System.Threading.Tasks.Task`1" /> with the execution.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableServiceAsync`1.DeleteAsync(System.Threading.CancellationToken,System.String,System.String,System.String)">
+            <summary>
+            Deletes the entity in asynchronous mode.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="id">The id values.</param>
+            <returns>
+            An instance of <see cref="T:System.Threading.Tasks.Task`1" /> with the execution.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableServiceAsync`1.FindAsync(System.String,System.String)">
+            <summary>
+            Finds the entity in asynchronous mode.
+            </summary>
+            <param name="id">The id values.</param>
+            <returns>
+            An instance of <see cref="T:System.Threading.Tasks.Task`1" /> with the execution.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableServiceAsync`1.FindAsync(System.Threading.CancellationToken,System.String,System.String)">
+            <summary>
+            Finds the entity in asynchronous mode.
+            </summary>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="id">The id values.</param>
+            <returns>
+            An instance of <see cref="T:System.Threading.Tasks.Task`1" /> with the execution.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableServiceAsync`1.InsertAsync(`0)">
+            <summary>
+            Inserts the specified entity in asyncronous mode.
+            </summary>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableServiceAsync`1.InsertAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Inserts the specified entity in asyncronous mode.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableServiceAsync`1.UpdateAsync(`0)">
+            <summary>
+            Updates the specified entity in asyncronous mode.
+            </summary>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableServiceAsync`1.UpdateAsync(`0,System.Threading.CancellationToken)">
+            <summary>
+            Updates the specified entity in asyncronous mode.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableServiceAsync`1.Query(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Queries the repositry with specified expressions
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableServiceAsync`1.Query(Proton.Foundation.Core.Data.IQueryObject{`0})">
+            <summary>
+            Queries  the repositry with specified query object
+            </summary>
+            <param name="query">The query.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.Services.WritableService`1">
+            <summary>
+            A service with serach and write operations
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <seealso cref="T:Proton.Foundation.Core.Services.QueryableService`1" />
+            <seealso cref="T:Proton.Foundation.Core.Services.IWritableService`1" />
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableService`1.#ctor(Proton.Foundation.Core.Data.IWritableRepository{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.Core.Services.WritableService`1"/> class.
+            </summary>
+            <param name="repository">The repository.</param>
+        </member>
+        <member name="P:Proton.Foundation.Core.Services.WritableService`1.WriteRepository">
+            <summary>
+            Gets the write repository.
+            </summary>
+            <value>
+            The write repository.
+            </value>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableService`1.Delete(`0)">
+            <summary>
+            Deletes the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableService`1.Delete(System.String,System.String)">
+            <summary>
+            Deletes the specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableService`1.Insert(`0)">
+            <summary>
+            Inserts the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.Core.Services.WritableService`1.Update(`0)">
+            <summary>
+            Updates the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.UnitOfWork.IUnitOfWork">
+            <summary>
+            Represent a business transaction.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.UnitOfWork.IUnitOfWork.Repository``1">
+            <summary>
+            Get the repository active in this transaction.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <returns>An instance of <see cref="T:Proton.Foundation.Core.Data.IRepository`1"/>.</returns>
+        </member>
+        <member name="T:Proton.Foundation.Core.UnitOfWork.IUnitOfWorkAsync">
+            <summary>
+            Represent a business transaction in asyncronous mode.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.Core.UnitOfWork.IUnitOfWorkAsync.Repository``1">
+            <summary>
+            Get the async repository for this transaction.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <remarks>The repository can be registered in Ioc and obteined or directly created as singleton by the uow.</remarks>
+            <returns>An instance of <see cref="T:Proton.Foundation.Core.Data.IRepository`1"/>.</returns>
+        </member>
+    </members>
+</doc>

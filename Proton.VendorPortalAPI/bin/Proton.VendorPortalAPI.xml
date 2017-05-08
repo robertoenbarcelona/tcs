@@ -1,0 +1,424 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Proton.VendorPortalAPI</name>
+    </assembly>
+    <members>
+        <member name="T:Proton.VendorPortalAPI.App_Start.IoCConfigExtension">
+            <summary>
+            Register application Ioc
+            </summary>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.App_Start.IoCConfigExtension.Register">
+            <summary>
+            Registers application behaviuors.
+            </summary>
+        </member>
+        <member name="T:Proton.VendorPortalAPI.WebApiConfigExtension">
+            <summary>
+            This class is used to register application special routes
+            </summary>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.WebApiConfigExtension.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Registers the routes in the Http configuration.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="T:Proton.VendorPortalAPI.WebApiApplication">
+            <summary>
+            The application class
+            </summary>
+            <seealso cref="T:Proton.Foundation.Web.Installation.ProtonWebApiApplication" />
+        </member>
+        <member name="M:Proton.VendorPortalAPI.WebApiApplication.Application_Start">
+            <summary>
+            Called when the application the start.
+            </summary>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.WebApiApplication.GetVersionInfo">
+            <summary>
+            Gets the version information actions to build the multiversion API.
+            </summary>
+            <returns>Ther operations to execute for build the version system for Swagger</returns>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.WebApiApplication.RegisterWebApiExtension(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Registers the web API extension.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.WebApiApplication.GetApplicationAssemblyName">
+            <summary>
+            Returns the current assembly file name
+            </summary>
+            <returns>Current assembly file name, without extension</returns>
+        </member>
+        <member name="T:Proton.VendorPortalAPI.V1.Controllers.ServiceContactController">
+            <summary>
+            Expose all operation about <see cref="T:Proton.VendorPortalAPI.V1.Models.SERVICE_CONTACT"/>
+            </summary>
+            <seealso cref="T:Proton.Foundation.Web.Controllers.WritableController`1" />
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.ServiceContactController.#ctor(Proton.Foundation.Core.Services.IWritableService{Proton.VendorPortalAPI.V1.Models.SERVICE_CONTACT},Proton.Foundation.Core.UnitOfWork.IUnitOfWork,Proton.Foundation.Core.Installation.ISerializationConfigurePolicy{Proton.VendorPortalAPI.V1.Models.SERVICE_CONTACT},Proton.Foundation.Core.ServiceBus.ITopicManager{Proton.VendorPortalAPI.V1.Models.SERVICE_CONTACT},Proton.Foundation.Core.Logging.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.VendorPortalAPI.V1.Controllers.ServiceContactController"/> class.
+            </summary>
+            <param name="service">The service.</param>
+            <param name="unitOfWork">The unit of work.</param>
+            <param name="policy"></param>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.ServiceContactController.GetAll(Proton.VendorPortalAPI.V1.Filters.ServiceContactQuery,System.Nullable{Proton.Foundation.Core.Serialization.SerializationMode})">
+            <summary>
+            Search Customers.
+            </summary>
+            <returns>A collection of Customer instances satisfing the criterias</returns>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.ServiceContactController.GetByKey(System.String,System.Nullable{Proton.Foundation.Core.Serialization.SerializationMode})">
+            <summary>
+            Gets the SERVICE_CONTACT for specified id />.
+            </summary>
+            <param name="id">The id.</param>
+            <param name="mode">Serialization mode</param>
+            <returns>
+            A single instance of <see cref="T:Proton.VendorPortalAPI.V1.Models.SERVICE_CONTACT" /> with the specified <paramref name="id"/>
+            </returns>
+        </member>
+        <member name="T:Proton.VendorPortalAPI.V1.Controllers.CentreEntityListController">
+            <summary>
+            Expose all operation about <see cref="T:Proton.VendorPortalAPI.V1.Models.CENTRE_ENTITY_LIST"/>
+            </summary>
+            <seealso cref="T:Proton.Foundation.Web.Controllers.WritableController`1" />
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.CentreEntityListController.#ctor(Proton.Foundation.Core.Services.IWritableService{Proton.VendorPortalAPI.V1.Models.CENTRE_ENTITY_LIST},Proton.Foundation.Core.UnitOfWork.IUnitOfWork,Proton.Foundation.Core.Installation.ISerializationConfigurePolicy{Proton.VendorPortalAPI.V1.Models.CENTRE_ENTITY_LIST},Proton.Foundation.Core.ServiceBus.ITopicManager{Proton.VendorPortalAPI.V1.Models.CENTRE_ENTITY_LIST},Proton.Foundation.Core.Logging.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.VendorPortalAPI.V1.Controllers.CentreEntityListController"/> class.
+            </summary>
+            <param name="service">The service.</param>
+            <param name="unitOfWork">The unit of work.</param>
+            <param name="policy"></param>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.CentreEntityListController.GetAll(Proton.VendorPortalAPI.V1.Filters.CentreEntityListQuery,System.Nullable{Proton.Foundation.Core.Serialization.SerializationMode})">
+            <summary>
+            Search Customers.
+            </summary>
+            <returns>A collection of Customer instances satisfing the criterias</returns>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.CentreEntityListController.GetByKey(System.String,System.Nullable{Proton.Foundation.Core.Serialization.SerializationMode})">
+            <summary>
+            Gets the CENTRE_ENTITY_LIST for specified id />.
+            </summary>
+            <param name="id">The id.</param>
+            <param name="mode">Serialization mode</param>
+            <returns>
+            A single instance of <see cref="T:Proton.VendorPortalAPI.V1.Models.CENTRE_ENTITY_LIST" /> with the specified <paramref name="id"/>
+            </returns>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.UserHistoryController.#ctor(Proton.Foundation.Core.Services.IWritableServiceAsync{Proton.VendorPortalAPI.V1.Models.UserHistory},Proton.Foundation.Core.UnitOfWork.IUnitOfWorkAsync,Proton.Foundation.Core.Installation.ISerializationConfigurePolicy{Proton.VendorPortalAPI.V1.Models.UserHistory},Proton.Foundation.Core.ServiceBus.ITopicManager{Proton.VendorPortalAPI.V1.Models.UserHistory},Proton.Foundation.Core.Logging.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.VendorPortalAPI.V1.Controllers.UserHistoryController"/> class.
+            </summary>
+            <param name="service">The service.</param>
+            <param name="unitOfWork">The unit of work.</param>
+            <param name="topicManager">The topic manager.</param>
+            <param name="policy"></param>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.UserHistoryController.CreateAsync(Proton.VendorPortalAPI.V1.Models.UserHistory)">
+            <summary>
+            Create an item with the specified value.
+            </summary>
+            <param name="entity">The values of the entity.</param>
+            <returns>A 201 created witrh the new instance or internal error</returns>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.UserHistoryController.UpdateAsync(System.String,Proton.VendorPortalAPI.V1.Models.UserHistory)">
+            <summary>
+            Update the entity specified by key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="entity">The entity.</param>
+            <returns>A 200 Ok with the entity, not found if not exists or internal error</returns>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.UserHistoryController.DeleteByKeyAsync(System.String,System.String)">
+            <summary>
+            Deletes the entity specified by key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="timeStamp">The time stamp.</param>
+            <returns>
+            A 200 Ok with no content, not found if not exists or internal error
+            </returns>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.UserController.#ctor(Proton.Foundation.Core.Services.IWritableServiceAsync{Proton.VendorPortalAPI.V1.Models.User},Proton.Foundation.Core.UnitOfWork.IUnitOfWorkAsync,Proton.Foundation.Core.Installation.ISerializationConfigurePolicy{Proton.VendorPortalAPI.V1.Models.User},Proton.Foundation.Core.ServiceBus.ITopicManager{Proton.VendorPortalAPI.V1.Models.User},Proton.Foundation.Core.Logging.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="!:CountryController"/> class.
+            </summary>
+            <param name="service">The service.</param>
+            <param name="unitOfWork">The unit of work.</param>
+            <param name="topicManager">The topic manager.</param>
+            <param name="policy"></param>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.UserController.CreateAsync(Proton.VendorPortalAPI.V1.Models.User)">
+            <summary>
+            Create an item with the specified value.
+            </summary>
+            <param name="entity">The values of the entity.</param>
+            <returns>A 201 created witrh the new instance or internal error</returns>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.UserController.UpdateAsync(System.String,Proton.VendorPortalAPI.V1.Models.User)">
+            <summary>
+            Update the entity specified by key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="entity">The entity.</param>
+            <returns>A 200 Ok with the entity, not found if not exists or internal error</returns>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.UserController.DeleteByKeyAsync(System.String,System.String)">
+            <summary>
+            Deletes the entity specified by key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="timeStamp">The time stamp.</param>
+            <returns>
+            A 200 Ok with no content, not found if not exists or internal error
+            </returns>
+        </member>
+        <member name="T:Proton.VendorPortalAPI.V1.Controllers.InvoiceController">
+            <summary>
+            Expose all operation about <see cref="T:Proton.VendorPortalAPI.V1.Models.INVOICE"/>
+            </summary>
+            <seealso cref="T:Proton.Foundation.Web.Controllers.WritableController`1" />
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.InvoiceController.#ctor(Proton.Foundation.Core.Services.IWritableService{Proton.VendorPortalAPI.V1.Models.INVOICE},Proton.Foundation.Core.UnitOfWork.IUnitOfWork,Proton.Foundation.Core.Installation.ISerializationConfigurePolicy{Proton.VendorPortalAPI.V1.Models.INVOICE},Proton.Foundation.Core.ServiceBus.ITopicManager{Proton.VendorPortalAPI.V1.Models.INVOICE},Proton.Foundation.Core.Logging.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.VendorPortalAPI.V1.Controllers.InvoiceController"/> class.
+            </summary>
+            <param name="service">The service.</param>
+            <param name="unitOfWork">The unit of work.</param>
+            <param name="policy"></param>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.InvoiceController.GetAll(Proton.VendorPortalAPI.V1.Filters.InvoiceQuery,System.Nullable{Proton.Foundation.Core.Serialization.SerializationMode})">
+            <summary>
+            Search Customers.
+            </summary>
+            <returns>A collection of Customer instances satisfing the criterias</returns>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.InvoiceController.GetByKey(System.String,System.Nullable{Proton.Foundation.Core.Serialization.SerializationMode})">
+            <summary>
+            Gets the INVOICE for specified id />.
+            </summary>
+            <param name="id">The id.</param>
+            <param name="mode">Serialization mode</param>
+            <returns>
+            A single instance of <see cref="T:Proton.VendorPortalAPI.V1.Models.INVOICE" /> with the specified <paramref name="id"/>
+            </returns>
+        </member>
+        <member name="T:Proton.VendorPortalAPI.V1.Controllers.VendorController">
+            <summary>
+            Expose all operation about <see cref="T:Proton.VendorPortalAPI.V1.Models.VENDOR"/>
+            </summary>
+            <seealso cref="T:Proton.Foundation.Web.Controllers.WritableController`1" />
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.VendorController.#ctor(Proton.Foundation.Core.Services.IWritableService{Proton.VendorPortalAPI.V1.Models.VENDOR},Proton.Foundation.Core.UnitOfWork.IUnitOfWork,Proton.Foundation.Core.Installation.ISerializationConfigurePolicy{Proton.VendorPortalAPI.V1.Models.VENDOR},Proton.Foundation.Core.ServiceBus.ITopicManager{Proton.VendorPortalAPI.V1.Models.VENDOR},Proton.Foundation.Core.Logging.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.VendorPortalAPI.V1.Controllers.VendorController"/> class.
+            </summary>
+            <param name="service">The service.</param>
+            <param name="unitOfWork">The unit of work.</param>
+            <param name="policy"></param>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.VendorController.GetAll(Proton.VendorPortalAPI.V1.Filters.VendorQuery,System.Nullable{Proton.Foundation.Core.Serialization.SerializationMode})">
+            <summary>
+            Search Customers.
+            </summary>
+            <returns>A collection of Customer instances satisfing the criterias</returns>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Controllers.VendorController.GetByKey(System.String,System.Nullable{Proton.Foundation.Core.Serialization.SerializationMode})">
+            <summary>
+            Gets the VENDOR for specified id />.
+            </summary>
+            <param name="id">The id.</param>
+            <param name="mode">Serialization mode</param>
+            <returns>
+            A single instance of <see cref="T:Proton.VendorPortalAPI.V1.Models.VENDOR" /> with the specified <paramref name="id"/>
+            </returns>
+        </member>
+        <member name="T:Proton.VendorPortalAPI.V1.Filters.ServiceContactQuery">
+            <summary>
+            Implement query for SERVICE_CONTACT
+            </summary>
+            <seealso cref="T:Proton.Foundation.Core.Data.QueryObject`1" />
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Filters.ServiceContactQuery.CountryISOCode">
+            <summary>
+            Gets or sets the email.
+            </summary>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Filters.ServiceContactQuery.Pattern">
+            <summary>
+            Gets or sets the pattern for search in name, it is a Contains.
+            </summary>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Filters.ServiceContactQuery.Query">
+            <summary>
+            Get the query expression.
+            </summary>
+            <returns>
+            An instance of the expression tree of the instance.
+            </returns>
+        </member>
+        <member name="T:Proton.VendorPortalAPI.V1.Filters.UserHistoryQuery">
+            <summary>
+            Implement query for User
+            </summary>
+            <seealso cref="T:Proton.Foundation.Core.Data.QueryObject`1" />
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Filters.UserHistoryQuery.UserId">
+            <summary>
+            Gets or sets the email.
+            </summary>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Filters.UserHistoryQuery.Pattern">
+            <summary>
+            Gets or sets the pattern for search in name, it is a Contains.
+            </summary>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Filters.UserHistoryQuery.Query">
+            <summary>
+            Get the query expression.
+            </summary>
+            <returns>
+            An instance of the expression tree of the instance.
+            </returns>
+        </member>
+        <member name="T:Proton.VendorPortalAPI.V1.Filters.UserQuery">
+            <summary>
+            Implement query for User
+            </summary>
+            <seealso cref="T:Proton.Foundation.Core.Data.QueryObject`1" />
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Filters.UserQuery.UserName">
+            <summary>
+            Gets or sets the email.
+            </summary>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Filters.UserQuery.Password">
+            <summary>
+            Gets or sets the email.
+            </summary>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Filters.UserQuery.Pattern">
+            <summary>
+            Gets or sets the pattern for search in name, it is a Contains.
+            </summary>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Filters.UserQuery.Query">
+            <summary>
+            Get the query expression.
+            </summary>
+            <returns>
+            An instance of the expression tree of the instance.
+            </returns>
+        </member>
+        <member name="T:Proton.VendorPortalAPI.V1.Filters.InvoiceQuery">
+            <summary>
+            Implement query for INVOICE
+            </summary>
+            <seealso cref="T:Proton.Foundation.Core.Data.QueryObject`1" />
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Filters.InvoiceQuery.VendorCode">
+            <summary>
+            Gets or sets the VendorCode.
+            </summary>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Filters.InvoiceQuery.CountryISO">
+            <summary>
+            Gets or sets the CountryISO.
+            </summary>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Filters.InvoiceQuery.Pattern">
+            <summary>
+            Gets or sets the pattern for search in name, it is a Contains.
+            </summary>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Filters.InvoiceQuery.Query">
+            <summary>
+            Get the query expression.
+            </summary>
+            <returns>
+            An instance of the expression tree of the instance.
+            </returns>
+        </member>
+        <member name="T:Proton.VendorPortalAPI.V1.Filters.CentreEntityListQuery">
+            <summary>
+            Implement query for CENTRE_ENTITY_LIST
+            </summary>
+            <seealso cref="T:Proton.Foundation.Core.Data.QueryObject`1" />
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Filters.CentreEntityListQuery.CountryISOCode">
+            <summary>
+            Gets or sets the email.
+            </summary>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Filters.CentreEntityListQuery.Pattern">
+            <summary>
+            Gets or sets the pattern for search in name, it is a Contains.
+            </summary>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Filters.CentreEntityListQuery.Query">
+            <summary>
+            Get the query expression.
+            </summary>
+            <returns>
+            An instance of the expression tree of the instance.
+            </returns>
+        </member>
+        <member name="T:Proton.VendorPortalAPI.V1.Filters.VendorQuery">
+            <summary>
+            Implement query for VENDOR
+            </summary>
+            <seealso cref="T:Proton.Foundation.Core.Data.QueryObject`1" />
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Filters.VendorQuery.Email">
+            <summary>
+            Gets or sets the email.
+            </summary>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Filters.VendorQuery.Pattern">
+            <summary>
+            Gets or sets the pattern for search in name, it is a Contains.
+            </summary>
+        </member>
+        <member name="M:Proton.VendorPortalAPI.V1.Filters.VendorQuery.Query">
+            <summary>
+            Get the query expression.
+            </summary>
+            <returns>
+            An instance of the expression tree of the instance.
+            </returns>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Models.UserHistory.UserId">
+            <summary> User Id Unique Key </summary>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Models.UserHistory.LoginTime">
+            <summary> User History Id Unique Key </summary>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Models.UserHistory.LogoutTime">
+            <summary> User History Id Unique Key </summary>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Models.User.UserName">
+            <summary> User Name </summary>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Models.User.Password">
+            <summary> Password </summary>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Models.User.LastLogon">
+            <summary> Last Time Logon </summary>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Models.User.IsActive">
+            <summary> Is Active </summary>
+        </member>
+        <member name="P:Proton.VendorPortalAPI.V1.Models.User.ERPType">
+            <summary> User's ERP Type (SUN / PS) </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SUNModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MIDFIN.dbo.CENTRE_ENTITY_LIST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CENTRE_ENTITY_LIST">
+          <Key>
+            <PropertyRef Name="CENTRE_CODE" />
+          </Key>
+          <Property Name="COUNTRY" Type="varchar" MaxLength="100" />
+          <Property Name="CENTRE_CODE" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CENTRE_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="DEFAULT_SUN_BU" Type="char" MaxLength="3" />
+          <Property Name="Legal_Entity" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Centre_Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="CountryISOCode" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MIDFIN.dbo.INVOICE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="INVOICE">
+          <Key>
+            <PropertyRef Name="BUCode" />
+            <PropertyRef Name="InvoiceDate" />
+            <PropertyRef Name="VendorCode" />
+          </Key>
+          <Property Name="LegalEntityName" Type="nvarchar" MaxLength="4000" />
+          <Property Name="BUCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CentreCode" Type="varchar" MaxLength="15" />
+          <Property Name="InvoiceReference" Type="nvarchar" MaxLength="30" />
+          <Property Name="Amount" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="CurrencyId" Type="varchar" MaxLength="5" />
+          <Property Name="InvoiceDate" Type="datetime" Nullable="false" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="Allocation" Type="char" MaxLength="1" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="VendorCode" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="JournalType" Type="varchar" MaxLength="5" />
+          <Property Name="JournalSource" Type="varchar" MaxLength="5" />
+          <Property Name="CountryISOCode" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MIDFIN.dbo.SERVICE_CONTACT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SERVICE_CONTACT">
+          <Key>
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="Country" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="CountryISOCode" Type="char" MaxLength="3" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MIDFIN.dbo.VENDOR' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VENDOR">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="AccountStatusId" />
+          </Key>
+          <Property Name="Email" Type="nvarchar" MaxLength="124" />
+          <Property Name="Id" Type="varchar" MaxLength="15" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountStatusId" Type="smallint" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="CountryISOCode" Type="varchar" MaxLength="3" />
+          <Property Name="BUCode" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="SUNModelStoreContainer">
+          <EntitySet Name="CENTRE_ENTITY_LIST" EntityType="Self.CENTRE_ENTITY_LIST" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CENTRE_ENTITY_LIST].[COUNTRY] AS [COUNTRY], 
+    [CENTRE_ENTITY_LIST].[CENTRE_CODE] AS [CENTRE_CODE], 
+    [CENTRE_ENTITY_LIST].[CENTRE_NAME] AS [CENTRE_NAME], 
+    [CENTRE_ENTITY_LIST].[DEFAULT_SUN_BU] AS [DEFAULT_SUN_BU], 
+    [CENTRE_ENTITY_LIST].[Legal_Entity] AS [Legal_Entity], 
+    [CENTRE_ENTITY_LIST].[Centre_Email] AS [Centre_Email], 
+    [CENTRE_ENTITY_LIST].[CountryISOCode] AS [CountryISOCode]
+    FROM [dbo].[CENTRE_ENTITY_LIST] AS [CENTRE_ENTITY_LIST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="INVOICE" EntityType="Self.INVOICE" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [INVOICE].[LegalEntityName] AS [LegalEntityName], 
+    [INVOICE].[BUCode] AS [BUCode], 
+    [INVOICE].[CentreCode] AS [CentreCode], 
+    [INVOICE].[InvoiceReference] AS [InvoiceReference], 
+    [INVOICE].[Amount] AS [Amount], 
+    [INVOICE].[CurrencyId] AS [CurrencyId], 
+    [INVOICE].[InvoiceDate] AS [InvoiceDate], 
+    [INVOICE].[DueDate] AS [DueDate], 
+    [INVOICE].[Allocation] AS [Allocation], 
+    [INVOICE].[PaymentDate] AS [PaymentDate], 
+    [INVOICE].[VendorCode] AS [VendorCode], 
+    [INVOICE].[Country] AS [Country], 
+    [INVOICE].[JournalType] AS [JournalType], 
+    [INVOICE].[JournalSource] AS [JournalSource], 
+    [INVOICE].[CountryISOCode] AS [CountryISOCode]
+    FROM [dbo].[INVOICE] AS [INVOICE]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SERVICE_CONTACT" EntityType="Self.SERVICE_CONTACT" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SERVICE_CONTACT].[Country] AS [Country], 
+    [SERVICE_CONTACT].[Email] AS [Email], 
+    [SERVICE_CONTACT].[CountryISOCode] AS [CountryISOCode]
+    FROM [dbo].[SERVICE_CONTACT] AS [SERVICE_CONTACT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VENDOR" EntityType="Self.VENDOR" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VENDOR].[Email] AS [Email], 
+    [VENDOR].[Id] AS [Id], 
+    [VENDOR].[Name] AS [Name], 
+    [VENDOR].[AccountStatusId] AS [AccountStatusId], 
+    [VENDOR].[Country] AS [Country], 
+    [VENDOR].[CountryISOCode] AS [CountryISOCode], 
+    [VENDOR].[BUCode] AS [BUCode]
+    FROM [dbo].[VENDOR] AS [VENDOR]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SUNModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SUNEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="INVOICEs" EntityType="SUNModel.INVOICE" />
+          <EntitySet Name="VENDORs" EntityType="SUNModel.VENDOR" />
+          <EntitySet Name="CENTRE_ENTITY_LIST" EntityType="SUNModel.CENTRE_ENTITY_LIST" />
+          <EntitySet Name="SERVICE_CONTACT" EntityType="SUNModel.SERVICE_CONTACT" />
+        </EntityContainer>
+        <EntityType Name="INVOICE">
+          <Key>
+            <PropertyRef Name="BUCode" />
+            <PropertyRef Name="InvoiceDate" />
+            <PropertyRef Name="VendorCode" />
+          </Key>
+          <Property Name="LegalEntityName" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="BUCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CentreCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceReference" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CurrencyId" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="Allocation" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="VendorCode" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="JournalType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="JournalSource" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="CountryISOCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VENDOR">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="AccountStatusId" />
+          </Key>
+          <Property Name="Email" Type="String" MaxLength="124" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountStatusId" Type="Int16" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryISOCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="BUCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CENTRE_ENTITY_LIST">
+          <Key>
+            <PropertyRef Name="CENTRE_CODE" />
+          </Key>
+          <Property Name="COUNTRY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CENTRE_CODE" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CENTRE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DEFAULT_SUN_BU" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Legal_Entity" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Centre_Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CountryISOCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SERVICE_CONTACT">
+          <Key>
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="CountryISOCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SUNModelStoreContainer" CdmEntityContainer="SUNEntities">
+          <EntitySetMapping Name="INVOICEs">
+            <EntityTypeMapping TypeName="SUNModel.INVOICE">
+              <MappingFragment StoreEntitySet="INVOICE">
+                <ScalarProperty Name="CountryISOCode" ColumnName="CountryISOCode" />
+                <ScalarProperty Name="JournalSource" ColumnName="JournalSource" />
+                <ScalarProperty Name="JournalType" ColumnName="JournalType" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Allocation" ColumnName="Allocation" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="InvoiceReference" ColumnName="InvoiceReference" />
+                <ScalarProperty Name="CentreCode" ColumnName="CentreCode" />
+                <ScalarProperty Name="BUCode" ColumnName="BUCode" />
+                <ScalarProperty Name="LegalEntityName" ColumnName="LegalEntityName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENDORs">
+            <EntityTypeMapping TypeName="SUNModel.VENDOR">
+              <MappingFragment StoreEntitySet="VENDOR">
+                <ScalarProperty Name="BUCode" ColumnName="BUCode" />
+                <ScalarProperty Name="CountryISOCode" ColumnName="CountryISOCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="AccountStatusId" ColumnName="AccountStatusId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CENTRE_ENTITY_LIST">
+            <EntityTypeMapping TypeName="SUNModel.CENTRE_ENTITY_LIST">
+              <MappingFragment StoreEntitySet="CENTRE_ENTITY_LIST">
+                <ScalarProperty Name="CountryISOCode" ColumnName="CountryISOCode" />
+                <ScalarProperty Name="Centre_Email" ColumnName="Centre_Email" />
+                <ScalarProperty Name="Legal_Entity" ColumnName="Legal_Entity" />
+                <ScalarProperty Name="DEFAULT_SUN_BU" ColumnName="DEFAULT_SUN_BU" />
+                <ScalarProperty Name="CENTRE_NAME" ColumnName="CENTRE_NAME" />
+                <ScalarProperty Name="CENTRE_CODE" ColumnName="CENTRE_CODE" />
+                <ScalarProperty Name="COUNTRY" ColumnName="COUNTRY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICE_CONTACT">
+            <EntityTypeMapping TypeName="SUNModel.SERVICE_CONTACT">
+              <MappingFragment StoreEntitySet="SERVICE_CONTACT">
+                <ScalarProperty Name="CountryISOCode" ColumnName="CountryISOCode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Proton.Foundation.StructureMapAdapters</name>
+    </assembly>
+    <members>
+        <member name="T:Proton.Foundation.StructureMapAdapters.App_Start.StructuremapMvc">
+            <summary>
+            This class is autostaring in MVC aplication and auto-register the Injection Dependecies adapters for StructureMap.
+            </summary>
+            <remarks>Developers had not to register anything ic app start for using StructureMap. In order to have ypour own adapters, please does not refere this assembly.</remarks>
+        </member>
+        <member name="P:Proton.Foundation.StructureMapAdapters.App_Start.StructuremapMvc.StructureMapDependencyScope">
+            <summary>
+            Gets or sets the structure map dependency scope.
+            </summary>
+            <value>
+            The structure map dependency scope.
+            </value>
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.App_Start.StructuremapMvc.End">
+            <summary>
+            Called when global Asp.Net application is shotting down.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.App_Start.StructuremapMvc.Start">
+            <summary>
+            Called when global Asp.Net application is starting.
+            </summary>
+        </member>
+        <member name="T:Proton.Foundation.StructureMapAdapters.App_Start.StructuremapWebApi">
+            <summary>
+            This class is autostaring in MVC aplication (with WebAPI) and auto-register the Injection Dependecies adapters for StructureMap for API controllers
+            </summary>
+            <remarks>Developers had not to register anything ic app start for using StructureMap. In order to have ypour own adapters, please does not refere this assembly.</remarks>
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.App_Start.StructuremapWebApi.End">
+            <summary>
+            Called when global Asp.Net application is shotting down.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.App_Start.StructuremapWebApi.Start">
+            <summary>
+            Called when global Asp.Net application is starting.
+            </summary>
+        </member>
+        <member name="T:Proton.Foundation.StructureMapAdapters.DependencyResolution.APIControllerConvention">
+            <summary>
+            Represent the default convention for registering APIcontrollers in a per request lifetime. 
+            </summary>
+            <seealso cref="T:StructureMap.Graph.IRegistrationConvention" />
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.DependencyResolution.APIControllerConvention.ScanTypes(StructureMap.Graph.Scanning.TypeSet,StructureMap.Registry)">
+            <summary>
+            Scans the types and build and registers APIcontrolelrs.
+            </summary>
+            <param name="types">The types.</param>
+            <param name="registry">The registry.</param>
+        </member>
+        <member name="T:Proton.Foundation.StructureMapAdapters.DependencyResolution.DefaultRegistry">
+            <summary>
+            Represent the default container configuration, i.e. a defualt conventin registration plus the controller convetnion.
+            </summary>
+            <seealso cref="T:StructureMap.Registry" />
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.DependencyResolution.DefaultRegistry.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.StructureMapAdapters.DependencyResolution.DefaultRegistry"/> class.
+            </summary>
+        </member>
+        <member name="T:Proton.Foundation.StructureMapAdapters.DependencyResolution.IoC">
+            <summary>
+            Factory fot container 
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.DependencyResolution.IoC.Initialize">
+            <summary>
+            Initializes an instance of a container with the defalut registry.
+            </summary>
+            <returns>The singleton container instance.</returns>
+        </member>
+        <member name="T:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapDependencyScope">
+            <summary>
+            The structure map dependency scope.
+            </summary>
+            <seealso cref="T:Microsoft.Practices.ServiceLocation.ServiceLocatorImplBase" />
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapDependencyScope.#ctor(StructureMap.IContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapDependencyScope"/> class.
+            </summary>
+            <param name="container">The container.</param>
+            <exception cref="T:System.ArgumentNullException">container</exception>
+        </member>
+        <member name="P:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapDependencyScope.Container">
+            <summary>
+            Gets or sets the container.
+            </summary>
+            <value>
+            The container.
+            </value>
+        </member>
+        <member name="P:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapDependencyScope.CurrentNestedContainer">
+            <summary>
+            Gets or sets the current nested container.
+            </summary>
+            <value>
+            The current nested container.
+            </value>
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapDependencyScope.CreateNestedContainer">
+            <summary>
+            Creates the nested container.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapDependencyScope.GetServices(System.Type)">
+            <summary>
+            Gets the services for a type.
+            </summary>
+            <param name="serviceType">Type of the service.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapDependencyScope.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapDependencyScope.DisposeNestedContainer">
+            <summary>
+            Disposes the nested container.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapDependencyScope.DoGetAllInstances(System.Type)">
+            <summary>
+            When implemented by inheriting classes, this method will do the actual work of
+            resolving all the requested service instances.
+            </summary>
+            <param name="serviceType">Type of service requested.</param>
+            <returns>
+            Sequence of service instance objects.
+            </returns>
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapDependencyScope.DoGetInstance(System.Type,System.String)">
+            <summary>
+            When implemented by inheriting classes, this method will do the actual work of resolving
+            the requested service instance.
+            </summary>
+            <param name="serviceType">Type of instance requested.</param>
+            <param name="id">Name of registered service you want. May be null.</param>
+            <returns>
+            The requested service instance.
+            </returns>
+        </member>
+        <member name="T:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapScopeModule">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:System.Web.IHttpModule" />
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapScopeModule.Init(System.Web.HttpApplication)">
+            <summary>
+            Initializes a module and prepares it to handle requests.
+            </summary>
+            <param name="context">An <see cref="T:System.Web.HttpApplication" /> that provides access to the methods, properties, and events common to all application objects within an ASP.NET application</param>
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapScopeModule.Dispose">
+            <summary>
+            Disposes of the resources (other than memory) used by the module that implements <see cref="T:System.Web.IHttpModule" />.
+            </summary>
+        </member>
+        <member name="T:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapWebApiDependencyResolver">
+            <summary>
+            The structure map dependency resolver.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapWebApiDependencyResolver.#ctor(StructureMap.IContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapWebApiDependencyResolver"/> class.
+            </summary>
+            <param name="container">
+            The container.
+            </param>
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapWebApiDependencyResolver.BeginScope">
+            <summary>
+            Begins the scope
+            </summary>
+            <returns>
+            The System.Web.Http.Dependencies.IDependencyScope.
+            </returns>
+        </member>
+        <member name="T:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapWebApiDependencyScope">
+            <summary>
+            The structure map web api dependency scope.
+            </summary>
+        </member>
+        <member name="M:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapWebApiDependencyScope.#ctor(StructureMap.IContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Proton.Foundation.StructureMapAdapters.DependencyResolution.StructureMapWebApiDependencyScope"/> class.
+            </summary>
+            <param name="container">The container.</param>
+        </member>
+    </members>
+</doc>

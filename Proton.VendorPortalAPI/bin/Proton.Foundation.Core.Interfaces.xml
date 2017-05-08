@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Proton.Foundation.Core.Interfaces</name>
+    </assembly>
+    <members>
+        <member name="T:Proton.Foundation.Core.Data.ExternalReferenceInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.Data.ExternalReferenceInfo.SystemName">
+            <summary>
+            Gets or sets the name of the system related.
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.Data.ExternalReferenceInfo.Identifier">
+            <summary>
+            Gets or sets the identifier of this entity in the related system
+            </summary>
+        </member>
+        <member name="T:Proton.Foundation.Core.Data.IIdentityEntity">
+            <summary>
+            Reopresent a graph entity, a root object
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.Data.IIdentityEntity.Id">
+            <summary>
+            Gets or sets the id used by cloud to refere this istance.
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.Data.IIdentityEntity.CreateDate">
+            <summary>
+            Gets or sets the create date.
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.Data.IIdentityEntity.DeleteDate">
+            <summary>
+            Gets or sets the delete date.
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.Data.IIdentityEntity.EditDate">
+            <summary>
+            Gets or sets the edit date.
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.Data.IIdentityEntity.ExternalReferenceIds">
+            <summary>
+            Gets or sets the related system ids of this instance in each system.
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.Data.IIdentityEntity.IsDeleted">
+            <summary>
+            Gets or sets a value indicating whether this instance is deleted.
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.Data.IIdentityEntity.ModifiedBy">
+            <summary>
+            Gets or sets the last writer.
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.Data.IIdentityEntity.SystemCaller">
+            <summary>
+            Gets or sets the supplier application.
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.Data.IIdentityEntity.Links">
+            <summary>
+            Gets or sets the links Hateos.
+            </summary>
+        </member>
+        <member name="P:Proton.Foundation.Core.Data.IIdentityEntity.TimeStamp">
+            <summary>
+            Gets or sets the time stamp.
+            </summary>
+        </member>
+    </members>
+</doc>
